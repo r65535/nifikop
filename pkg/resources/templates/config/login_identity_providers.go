@@ -22,6 +22,22 @@ var LoginIdentityProvidersTemplate = `<?xml version="1.0" encoding="UTF-8" stand
 -->
 <loginIdentityProviders>
     <!--
+        Single User Login Identity Provider supporting automated generation of Username and Password
+
+        The provider will write the following log messages when 'Username' and 'Password' are empty:
+
+        Generated Username [USERNAME]
+        Generated Password [PASSWORD]
+
+        The 'Username' will be a random UUID and the 'Password' will be stored using bcrypt hashing
+    -->
+    <provider>
+        <identifier>single-user-provider</identifier>
+        <class>org.apache.nifi.authentication.single.user.SingleUserLoginIdentityProvider</class>
+        <property name="Username"/>
+        <property name="Password"/>
+    </provider>
+    <!--
         Identity Provider for users logging in with username/password against an LDAP server.
         
         'Authentication Strategy' - How the connection to the LDAP server is authenticated. Possible

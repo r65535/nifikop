@@ -32,6 +32,10 @@ var AuthorizersTemplate = `{{- $nodeList := .NodeList }}
         <class>org.apache.nifi.authorization.StandardManagedAuthorizer</class>
         <property name="Access Policy Provider">file-access-policy-provider</property>
     </authorizer>
+    <authorizer>
+        <identifier>single-user-authorizer</identifier>
+        <class>org.apache.nifi.authorization.single.user.SingleUserAuthorizer</class>
+    </authorizer>
 </authorizers>
 `
 
@@ -54,6 +58,10 @@ var EmptyAuthorizersTemplate = `<authorizers>
         <identifier>managed-authorizer</identifier>
         <class>org.apache.nifi.authorization.StandardManagedAuthorizer</class>
         <property name="Access Policy Provider">file-access-policy-provider</property>
+    </authorizer>
+    <authorizer>
+        <identifier>single-user-authorizer</identifier>
+        <class>org.apache.nifi.authorization.single.user.SingleUserAuthorizer</class>
     </authorizer>
 </authorizers>
 `
